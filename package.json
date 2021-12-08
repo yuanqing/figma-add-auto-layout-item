@@ -1,0 +1,42 @@
+{
+  "dependencies": {
+    "@create-figma-plugin/utilities": "^1.8.0"
+  },
+  "devDependencies": {
+    "@create-figma-plugin/build": "^1.8.0",
+    "@create-figma-plugin/tsconfig": "^1.8.0",
+    "@figma/plugin-typings": "1.37.0",
+    "typescript": "^4"
+  },
+  "scripts": {
+    "build": "build-figma-plugin --typecheck --minify",
+    "watch": "build-figma-plugin --typecheck --watch"
+  },
+  "figma-plugin": {
+    "editorType": [
+      "figma"
+    ],
+    "id": "add-auto-layout-item",
+    "name": "Add Auto Layout Item",
+    "menu": [
+      {
+        "name": "Add Auto Layout Item",
+        "main": "src/add-auto-layout-item.ts"
+      },
+      {
+        "name": "Remove Auto Layout Item",
+        "main": "src/remove-auto-layout-item.ts"
+      }
+    ],
+    "relaunchButtons": {
+      "addAutoLayoutItem": {
+        "name": "Add Auto Layout Item",
+        "main": "src/add-auto-layout-item.ts"
+      },
+      "removeAutoLayoutItem": {
+        "name": "Remove Auto Layout Item",
+        "main": "src/remove-auto-layout-item.ts"
+      }
+    }
+  }
+}
