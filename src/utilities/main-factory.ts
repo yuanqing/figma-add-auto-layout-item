@@ -1,7 +1,4 @@
-import {
-  formatErrorMessage,
-  setRelaunchButton
-} from '@create-figma-plugin/utilities'
+import { formatErrorMessage } from '@create-figma-plugin/utilities'
 
 import { AutoLayoutNode } from './types.js'
 
@@ -9,17 +6,15 @@ export function mainFactory(
   processAutoLayoutNode: (node: AutoLayoutNode) => void
 ): () => void {
   return function (): void {
-    const autoLayoutNodes = getSelectedAutoLayoutNodes()
-    if (autoLayoutNodes.length === 0) {
+    const nodes = getSelectedAutoLayoutNodes()
+    if (nodes.length === 0) {
       figma.closePlugin(
         formatErrorMessage('No Auto Layout layers in selection')
       )
       return
     }
-    for (const node of autoLayoutNodes) {
+    for (const node of nodes) {
       processAutoLayoutNode(node)
-      setRelaunchButton(node, 'addAutoLayoutItem')
-      setRelaunchButton(node, 'removeAutoLayoutItem')
     }
     figma.closePlugin()
   }
